@@ -14,7 +14,7 @@ type TCPPeer struct{
 	/*
 	 * If we dial and retrieve a conn => outbound == true
 	 * If we listen and retrieve a conn => inbound == true
-	*/
+	 */
 	outbound bool
 }
 
