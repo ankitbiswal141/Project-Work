@@ -1,4 +1,4 @@
-module github.com/Project-Work/CRUD-App
+module github.com/ankitbiswal141/Project-Work/CRUD-App/src
 
 go 1.22.2
 
