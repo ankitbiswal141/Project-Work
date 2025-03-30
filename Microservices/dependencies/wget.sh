@@ -1,0 +1,15 @@
+#!bin/bash
+
+# Head to the required directory
+cd ../account
+
+# Updates the system packages
+sudo apt update
+
+# Command
+wget https://github.com/protocolbuffers/protobuf/releases/download/v23.0/protoc-23.0-linux-x86_64.zip
+
+# Make a clean up after the installation
+clear
+
+
