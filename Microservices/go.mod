@@ -7,9 +7,6 @@ toolchain go1.23.7
 require (
 	github.com/99designs/gqlgen v0.17.68
 	github.com/kelseyhightower/envconfig v1.4.0
-)
-
-require (
 	github.com/agnivade/levenshtein v1.2.1 // indirect
 	github.com/go-viper/mapstructure/v2 v2.2.1 // indirect
 	github.com/google/uuid v1.6.0 // indirect
