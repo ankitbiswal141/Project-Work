@@ -2,6 +2,8 @@ package account
 
 import (
 	"context"
+	"net"
+	"fmt"
 	"google.golang.org/grpc/reflection"
 	"google.golang.org/grpc"
 )
@@ -22,28 +24,51 @@ func ListenServer(s Service,port int) error{
 	return server.Serve(listen)
 }
 
-func (s *grpcServer) PostAccount(ctx context.Context, r *pb.) (*pb.,error) {
-	a,err := s.service.PostAccount((ctx,r.Name)
+func (s *grpcServer) PostAccount(ctx context.Context, r *pb.PostAccountRequest) (*pb.PostAccountResponse,error) {
+	res,err := s.service.PostAccount(ctx,r.Name)
 	if err!=nil {
 		return nil,err
 	}
 
-	return &pb.{}
+	return &pb.PostAccountResponse{
+		Account: &pb.Account{
+			Id: res.ID,
+			Name: res.Name,
+		},
+	},nil
 }
 
-func (s *grpcServer) GetAccount(ctx context.Context, r *pb.) (*pb.,error) {
-	a,err := s.service.GetAccount(ctx,r.ID)
+func (s *grpcServer) GetAccount(ctx context.Context, r *pb.GetAccountRequest) (*pb.GetAccountResponse,error) {
+	res,err := s.service.GetAccount(ctx,r.ID)
 	if err!= nil{
 		return nil,err
 	}
 
-	return &pb.{}
+	return &pb.GetAccountResponse{
+		Account: &pb.Account{
+			ID: res.ID,
+			Name: res.Name,
+		},
+	},nil
 }
 
-func (s *grpcServer) GetAccounts(ctx context.Context, r *pb.) (*pb.,error) {
-	a,err := s.service.GetAccounts(ctx,r.ID)
+func (s *grpcServer) GetAccounts(ctx context.Context, r *pb.GetAccountsRequest) (*pb.GetAccountsResponse,error) {
+	res,err := s.service.GetAccounts(ctx,r.ID)
 	if err!= nil {
 		return nil,err
 	}
-	return &pb.{}
+
+	accounts := []*pb.Account{}
+	for _,p := range res {
+		accounts = append(accounts, 
+			&pb.Account{
+				ID: p.ID,
+				Name: p.Name,
+			},
+		)
+	}
+
+	return &pb.GetAccountsResponse{
+		Accounts:accounts,
+	},nil
 }
