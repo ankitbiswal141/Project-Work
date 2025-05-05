@@ -1,11 +1,14 @@
 package main
 
 import (
-  "github.com/99designs/gqlgen/graphql"
-  ""
+	"github.com/99designs/gqlgen/graphql"
+	"golang.org/x/text/message/catalog"
 )
-type Server struct{
 
+type Server struct{
+  accountClient *account.Client
+  catalogClient *catalog.Client
+  orderClient   *order.Client
 }
 
 // It takes three queries for the database client

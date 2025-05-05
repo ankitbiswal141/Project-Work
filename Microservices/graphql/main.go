@@ -29,6 +29,6 @@ func main(){
 		log.Fatal(err)
 	}
 
-	http.Handle("/graphql",handler.New((server.ToExecutableSchema())))
+	http.Handle("/graphql",handler.GraphQL((server.ToExecutableSchema())))
 	http.Handle("/playground", playground.Handler("ankit","/graphql"))
 }

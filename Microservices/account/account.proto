@@ -10,39 +10,37 @@ message Account{
 }
 
 message PostAccountRequest {
-
+  string name=1;
 }
 
 message PostAccountResponse {
-
+  Account account 
 }
 
 message GetAccountRequest {
-
+  string id=1;
 }
 
 message GetAccountResponse {
-
+  Account account=1;
 }
 
 message GetAccountsRequest {
-
+  unint64 skip = 1;
+  unint64 take = 1;
 }
 
 message GetAccountsResponse {
-
+  repeated Account accounts = 1;
 }
 
 service AccountService {
   rpc PostAccount (PostAccountRequest) returns (PostAccountResponse) {
-
   }
 
   rpc GetAccount (GetAccountRequest) returns (GetAccountResponse) {
-
   }
 
   rpc GetAccounts (GetAccountsRequest) returns (GetAccountsResponse) {
-
   }
 }
