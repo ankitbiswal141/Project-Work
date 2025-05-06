@@ -14,19 +14,42 @@
 
   ## Files
     -- account/
-       >
+       -- cmd/
+          -- account/
+           > main.go
+       
+       # Functionality:
+        > client.go
+        > repository.go
+        > server.go
+        > service.go
+
+       # Proto:
+        > account.proto       // Protobuff
+        
+       # Deploy:
+        > app.dockerfile
+        > db.dockerfile
+
 
     -- catalog/
        >
     
     -- graphql/
-       > app.dockerfile
-       > gqlgen.yml
-       > graph.go
-       > models.go
-       > mutation_resolver.go
-       > query_resolver.go
-       > // models_gen.go ( Will be added after installation of the mentioned libraries and dependencies. )
+       
+       # Functionality:
+        > graph.go
+        > models.go
+        > mutation_resolver.go
+        > query_resolver.go
+        > // models_gen.go ( Will be added after installation of the mentioned libraries and dependencies. )
+      
+       # Deploy:
+        > app.dockerfile
+        > gqlgen.yml
+
+       # Database:
+        > schema.graphql
 
     --order/
       >
@@ -39,6 +62,16 @@
 
 
 # Libraries Install And Dependencies:
+  -- graphql/
+     ./main.go :-
+       + "github.com/99designs/gqlgen/graphql/playground"
+	     + "github.com/99designs/gqlgen/handler"
+	     + "github.com/kelseyhightower/envconfig"
+
+     ./graph.go :-
+       + "github.com/99designs/gqlgen/graphql"
+       + "golang.org/x/text/message/catalog"
+  
 -> github.com/jinzhu/gorm
 -> github.com/jinzhu/gorm/dialects/mysql
 -> github.com/99designs/gqlgen

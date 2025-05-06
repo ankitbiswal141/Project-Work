@@ -35,7 +35,7 @@ func (s *grpcServer) PostAccount(ctx context.Context, r *pb.PostAccountRequest) 
 		Account: &pb.Account{
 			Id:   res.ID,
 			Name: res.Name,
-		},
+		}
 	}, nil
 }
 
