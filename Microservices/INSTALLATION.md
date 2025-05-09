@@ -12,3 +12,12 @@
 8. source ~/.bashrc
 
 >> Module 2 is available in /account section in ADD.md
+
+>> Or you can RUN the INSTALL.sh directly, unless it causes some errors
+-- cmd:
+      chmod +x INSTALL.sh
+
+      bash INSTALL.sh
+      or
+      ./INSTALL.sh
+      
