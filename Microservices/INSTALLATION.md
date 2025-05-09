@@ -1,3 +1,7 @@
+## Here is all the commands required to run to accomodate the Accounts services:
+
+-- Module 1:
+
 1. wget https://github.com/protobuf/releases//download/v23.0/protoc-23.0-linux_x86_64.zip
 2. unzip protoc-23.0-linux-x86_64.zip -d protoc
 3. sudo mv protoc/bin/protoc /usr/local/bin
@@ -7,3 +11,4 @@
 7. export PATH="$PATH:$(go env GOPATH)/bin"
 8. source ~/.bashrc
 
+>> Module 2 is available in /account section in ADD.md
