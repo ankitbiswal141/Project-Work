@@ -6,3 +6,4 @@
 6. echo $PATH
 7. export PATH="$PATH:$(go env GOPATH)/bin"
 8. source ~/.bashrc
+
