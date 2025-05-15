@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option go_package = "github.com/ankitbiswal141/Project-Work/Microservices/account/pb";
+option go_package = "./";
 
 package pb;
 
