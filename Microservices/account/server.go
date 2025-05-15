@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"net"
 
+	"github.com/ankitbiswal141/Project-Work/Microservices/account/pb/github.com/ankitbiswal141/Project-Work/Microservices/account/pb"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
 )
@@ -20,6 +21,7 @@ func ListenServer(s Service, port int) error {
 	}
 
 	server := grpc.NewServer()
+	pb.RegisterAccountServiceServer(server, &grpcServer{s})
 	reflection.Register(server)
 
 	return server.Serve(listen)
@@ -35,26 +37,26 @@ func (s *grpcServer) PostAccount(ctx context.Context, r *pb.PostAccountRequest) 
 		Account: &pb.Account{
 			Id:   res.ID,
 			Name: res.Name,
-		}
+		},
 	}, nil
 }
 
 func (s *grpcServer) GetAccount(ctx context.Context, r *pb.GetAccountRequest) (*pb.GetAccountResponse, error) {
-	res, err := s.service.GetAccount(ctx, r.ID)
+	res, err := s.service.GetAccount(ctx, r.Id)
 	if err != nil {
 		return nil, err
 	}
 
 	return &pb.GetAccountResponse{
 		Account: &pb.Account{
-			ID:   res.ID,
+			Id:   res.ID,
 			Name: res.Name,
 		},
 	}, nil
 }
 
 func (s *grpcServer) GetAccounts(ctx context.Context, r *pb.GetAccountsRequest) (*pb.GetAccountsResponse, error) {
-	res, err := s.service.GetAccounts(ctx, r.ID)
+	res, err := s.service.GetAccounts(ctx, r.)
 	if err != nil {
 		return nil, err
 	}
@@ -63,7 +65,7 @@ func (s *grpcServer) GetAccounts(ctx context.Context, r *pb.GetAccountsRequest) 
 	for _, p := range res {
 		accounts = append(accounts,
 			&pb.Account{
-				ID:   p.ID,
+				Id:   p.ID,
 				Name: p.Name,
 			},
 		)

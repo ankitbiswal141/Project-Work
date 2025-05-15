@@ -24,14 +24,14 @@ func NewPostgresRepository(url string) (Repository, error){
 		return nil, err
 	}
 
-	err := db.Ping()
+	err = db.Ping()
 
 	if err != nil {
 		return nil,err
 	}
 
 	return &postgresRepository{
-		db
+		db,
 	},nil
 }
 
